@@ -4,7 +4,7 @@
 > 基于yii实现，全部采用正则匹配youku／soku网页，实现一下接口
 
 前端app 由react native实现
-### 标题app 及源码下载  http://git.oschina.net/man0sions/DotaVideo
+### app 及源码下载  http://git.oschina.net/man0sions/DotaVideo
 ### 截图
 
 #####标题视频列表
