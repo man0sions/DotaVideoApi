@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/*
-!.gitkeep
 /assets/*
 /protected/runtime/*
+!.gitkeep
