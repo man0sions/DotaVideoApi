@@ -3,8 +3,9 @@
 ##  一:视频信息
 > 基于yii实现，全部采用正则匹配youku／soku网页，实现一下接口
 
-前端app 由react native实现
-### app 及源码下载  http://git.oschina.net/man0sions/DotaVideo
+前端app 
+###  由react native实现 app 及源码下载  http://git.oschina.net/man0sions/DotaVideo
+###  由angularjs 实现 源码下载  http://git.oschina.net/man0sions/angularVideos
 ### 截图
 
 #####标题视频列表
@@ -191,5 +192,4 @@ od | 排序 （1-最新发布,2-最多播放,3-最多评论,4-最多收藏）|in
 
 ## 二：用户模块
 > 基于yii ActiveRecord和sqlite，实现 用户注册、登录、订阅，取消等功能
-
 
