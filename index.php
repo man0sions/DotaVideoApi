@@ -5,7 +5,7 @@ header("Content-Type: text/html; charset=UTF-8");
 $yii=dirname(__FILE__).'/protected/framework/yiilite.php';
 
 $config=dirname(__FILE__).'/protected/config/main.php';
-
+define("ROOT_PATH",dirname(__FILE__));
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',false);
 // specify how many levels of call stack should be shown in each log message

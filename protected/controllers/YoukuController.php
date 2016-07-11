@@ -65,21 +65,22 @@ class YoukuController extends Controller {
 		$limitdate = @$json['limitdate']?$json['limitdate']:0;
 		$url = "http://www.soku.com/search_video/q_".($q)."_orderby_".$od."_limitdate_".$limitdate."?site=14&_lg=10&lengthtype=$lt&page=$cp";
 //		var_dump($url);die();
+//		$html = file_get_contents(ROOT_PATH."/assets/test123.html");
 		$html = file_get_contents($url);
-
 		$cname = $q."_users";
-		preg_match_all("#class=\"v\" data-type=\"tipHandle\">([\s\S]+?)class=\"iku_ico#",$html,$hlist);
+		preg_match_all("#class=\"v-thumb\">([\s\S]+?)<div class=\"v\"#",$html,$hlist);
 		$userdata = Yii::app()->cache->get($cname);
 		foreach($hlist[1] as $key=>$val)
 		{
+
 			$l = array();
-			preg_match("#img alt=\"([^\"]+?)\" src=\"([^\"]+?)\"#",$val,$p1);
+			preg_match("#img alt=\"([^\"]+?)\"[^>]+?src=\"([^\"]+?)\"#",$val,$p1);
 			preg_match("#v-time\">([^<>]+?)<#",$val,$p2);
 			preg_match("#_log_vid=\"([^\"]+?)\"#",$val,$p3);
 			preg_match("#username\">([\s\S]+?)</a#",$val,$p4);
 			preg_match("#href=\"http://i\.youku\.com/u/([^\"]+)\"#",$val,$p7);
 			preg_match("#pub\">([^<>]+?)<#",$val,$p5);
-			preg_match("#播放: </label> <span>([^<>]+?)</span>#",$val,$p6);
+			preg_match("#r\">([^<>]+?)<#",$val,$p6);
 			$l['name'] = $p1[1];
 			$l['pic'] = $p1[2];
 			$l['duration'] = $p2[1];
@@ -87,8 +88,9 @@ class YoukuController extends Controller {
 			$uname = @trim(strip_tags($p4[1]));
 			$l['uname'] = @trim(strip_tags($p4[1]));
 			$l['userinfo'] = @$userdata[$uname];
-			$l['time'] = @$p5[1];
-			$l['click_count'] = @$p6[1];
+			$l['click_count'] = @$p5[1];
+			$l['time'] = @$p6[1];
+
 			$da[] = $l;
 		}
 		$res = Main::apiCodeInit(1);
